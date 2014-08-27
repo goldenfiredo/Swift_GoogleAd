@@ -19,7 +19,7 @@ class ViewController: UIViewController, GADBannerViewDelegate {
         
         bannerView = GADBannerView()
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-        bannerView?.adUnitID = "ca-app-pub-6938332798224330/5303633206"
+        bannerView?.adUnitID = "ca-app-pub-6938332798224330/9023870805"
         bannerView?.delegate = self
         bannerView?.rootViewController = self
         self.view.addSubview(bannerView!)
@@ -27,6 +27,14 @@ class ViewController: UIViewController, GADBannerViewDelegate {
         
         timer?.invalidate()
         timer = NSTimer.scheduledTimerWithTimeInterval(40, target: self, selector: "GoogleAdRequestTimer", userInfo: nil, repeats: true)
+        
+        var image = UIImage(named: "admob.png")
+        var imageView = UIImageView(image: image)
+        var frame = imageView.frame
+        frame.origin.x = 0
+        frame.origin.y = bannerView!.frame.size.height
+        imageView.frame = frame
+        self.view.addSubview(imageView)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "AppBecomeActive", name: UIApplicationDidBecomeActiveNotification, object: nil)
         

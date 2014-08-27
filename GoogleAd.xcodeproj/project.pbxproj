@@ -15,6 +15,7 @@
 		4D7DFE6919AD676200284480 /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D7DFE6719AD676200284480 /* libGoogleAdMobAds.a */; };
 		4D7DFE6A19AD676200284480 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4D7DFE6819AD676200284480 /* README.txt */; };
 		4D7DFE6C19AD677F00284480 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D7DFE6B19AD677E00284480 /* AdSupport.framework */; };
+		4D7DFE6F19AD8EBA00284480 /* admob.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D7DFE6E19AD8EBA00284480 /* admob.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		4D7DFE6819AD676200284480 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		4D7DFE6B19AD677E00284480 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		4D7DFE6D19AD67C500284480 /* Swift_Bridging_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Swift_Bridging_Header.h; sourceTree = "<group>"; };
+		4D7DFE6E19AD8EBA00284480 /* admob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = admob.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		4D7DFE3A19AD66F200284480 /* GoogleAd */ = {
 			isa = PBXGroup;
 			children = (
+				4D7DFE6E19AD8EBA00284480 /* admob.png */,
 				4D7DFE5A19AD676200284480 /* GoogleAdMobSdk */,
 				4D7DFE3D19AD66F200284480 /* AppDelegate.swift */,
 				4D7DFE3F19AD66F200284480 /* ViewController.swift */,
@@ -237,6 +240,7 @@
 				4D7DFE4319AD66F200284480 /* Main.storyboard in Resources */,
 				4D7DFE6A19AD676200284480 /* README.txt in Resources */,
 				4D7DFE4519AD66F200284480 /* Images.xcassets in Resources */,
+				4D7DFE6F19AD8EBA00284480 /* admob.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,6 +457,7 @@
 				4D7DFE5619AD66F300284480 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4D7DFE5719AD66F300284480 /* Build configuration list for PBXNativeTarget "GoogleAdTests" */ = {
 			isa = XCConfigurationList;
@@ -461,6 +466,7 @@
 				4D7DFE5919AD66F300284480 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
