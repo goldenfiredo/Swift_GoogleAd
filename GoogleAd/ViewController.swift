@@ -10,13 +10,17 @@ import UIKit
 
 class ViewController: UIViewController, GADBannerViewDelegate {
     var bannerView:GADBannerView?
+    var imageView:UIImageView?
     var timer:NSTimer?
     var loadRequestAllowed = true
+    var bannerDisplayed = false
+    let statusbarHeight:CGFloat = 20.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        bannerDisplayed = false
         bannerView = GADBannerView()
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         bannerView?.adUnitID = "ca-app-pub-6938332798224330/9023870805"
@@ -29,12 +33,12 @@ class ViewController: UIViewController, GADBannerViewDelegate {
         timer = NSTimer.scheduledTimerWithTimeInterval(40, target: self, selector: "GoogleAdRequestTimer", userInfo: nil, repeats: true)
         
         var image = UIImage(named: "admob.png")
-        var imageView = UIImageView(image: image)
-        var frame = imageView.frame
+        imageView = UIImageView(image: image)
+        var frame = imageView!.frame
         frame.origin.x = 0
-        frame.origin.y = bannerView!.frame.size.height
-        imageView.frame = frame
-        self.view.addSubview(imageView)
+        frame.origin.y = statusbarHeight
+        imageView!.frame = frame
+        self.view.addSubview(imageView!)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "AppBecomeActive", name: UIApplicationDidBecomeActiveNotification, object: nil)
         
@@ -69,24 +73,57 @@ class ViewController: UIViewController, GADBannerViewDelegate {
     //GADBannerViewDelegate
     func adViewDidReceiveAd(view: GADBannerView!) {
         println("adViewDidReceiveAd:\(view)");
+        bannerDisplayed = true
+        relayoutViews()
     }
     
     func adView(view: GADBannerView!, didFailToReceiveAdWithError error: GADRequestError!) {
         println("\(view) error:\(error)")
+        bannerDisplayed = false
+        relayoutViews()
     }
     
     func adViewWillPresentScreen(adView: GADBannerView!) {
         println("adViewWillPresentScreen:\(adView)")
+        bannerDisplayed = false
+        relayoutViews()
     }
     
     func adViewWillLeaveApplication(adView: GADBannerView!) {
         println("adViewWillLeaveApplication:\(adView)")
+        bannerDisplayed = false
+        relayoutViews()
     }
     
     func adViewWillDismissScreen(adView: GADBannerView!) {
         println("adViewWillDismissScreen:\(adView)")
+        bannerDisplayed = false
+        relayoutViews()
     }
     
+    func relayoutViews() {
+        if (bannerDisplayed) {
+            var bannerFrame = bannerView!.frame
+            bannerFrame.origin.x = 0
+            bannerFrame.origin.y = statusbarHeight
+            bannerView!.frame = bannerFrame
+            
+            var imageviewFrame = imageView!.frame
+            imageviewFrame.origin.x = 0
+            imageviewFrame.origin.y = statusbarHeight + bannerFrame.size.height
+            imageView!.frame = imageviewFrame
+        } else {
+            var bannerFrame = bannerView!.frame
+            bannerFrame.origin.x = 0
+            bannerFrame.origin.y = 0 - bannerFrame.size.height
+            bannerView!.frame = bannerFrame
+            
+            var imageviewFrame = imageView!.frame
+            imageviewFrame.origin.x = 0
+            imageviewFrame.origin.y = statusbarHeight
+            imageView!.frame = imageviewFrame
+        }
+    }
     
 }
 
