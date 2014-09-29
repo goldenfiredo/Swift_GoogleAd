@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import iAd
 
-class ViewController: UIViewController, GADBannerViewDelegate {
+class ViewController: UIViewController, GADBannerViewDelegate, ADBannerViewDelegate {
+    var iAdSupported = false
+    var iAdView:ADBannerView?
     var bannerView:GADBannerView?
     var imageView:UIImageView?
     var timer:NSTimer?
@@ -20,17 +23,27 @@ class ViewController: UIViewController, GADBannerViewDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        bannerDisplayed = false
-        bannerView = GADBannerView()
-        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-        bannerView?.adUnitID = "ca-app-pub-6938332798224330/9023870805"
-        bannerView?.delegate = self
-        bannerView?.rootViewController = self
-        self.view.addSubview(bannerView!)
-        bannerView?.loadRequest(GADRequest())
+        iAdSupported = iAdTimeZoneSupported()
         
-        timer?.invalidate()
-        timer = NSTimer.scheduledTimerWithTimeInterval(40, target: self, selector: "GoogleAdRequestTimer", userInfo: nil, repeats: true)
+        bannerDisplayed = false
+        
+        if iAdSupported {
+            iAdView = ADBannerView(adType: ADAdType.Banner)
+            iAdView?.frame = CGRectMake(0, 0 - iAdView!.frame.height, iAdView!.frame.width, iAdView!.frame.height)
+            iAdView?.delegate = self
+            self.view.addSubview(iAdView!)
+            
+        } else {
+            bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+            bannerView?.adUnitID = "ca-app-pub-6938332798224330/9023870805"
+            bannerView?.delegate = self
+            bannerView?.rootViewController = self
+            self.view.addSubview(bannerView!)
+            bannerView?.loadRequest(GADRequest())
+        
+            timer?.invalidate()
+            timer = NSTimer.scheduledTimerWithTimeInterval(40, target: self, selector: "GoogleAdRequestTimer", userInfo: nil, repeats: true)
+        }
         
         var image = UIImage(named: "admob.png")
         imageView = UIImageView(image: image)
@@ -46,6 +59,10 @@ class ViewController: UIViewController, GADBannerViewDelegate {
     }
 
     func GoogleAdRequestTimer() {
+        if iAdSupported {
+            return;
+        }
+        
         if (!loadRequestAllowed) {
             println("load request not allowed")
             return
@@ -103,20 +120,28 @@ class ViewController: UIViewController, GADBannerViewDelegate {
     
     func relayoutViews() {
         if (bannerDisplayed) {
-            var bannerFrame = bannerView!.frame
+            var bannerFrame = iAdSupported ? iAdView!.frame : bannerView!.frame
             bannerFrame.origin.x = 0
             bannerFrame.origin.y = statusbarHeight
-            bannerView!.frame = bannerFrame
+            if iAdSupported {
+                iAdView!.frame = bannerFrame
+            } else {
+                bannerView!.frame = bannerFrame
+            }
             
             var imageviewFrame = imageView!.frame
             imageviewFrame.origin.x = 0
             imageviewFrame.origin.y = statusbarHeight + bannerFrame.size.height
             imageView!.frame = imageviewFrame
         } else {
-            var bannerFrame = bannerView!.frame
+            var bannerFrame = iAdSupported ? iAdView!.frame : bannerView!.frame
             bannerFrame.origin.x = 0
             bannerFrame.origin.y = 0 - bannerFrame.size.height
-            bannerView!.frame = bannerFrame
+            if iAdSupported {
+                iAdView!.frame = bannerFrame
+            } else {
+                bannerView!.frame = bannerFrame
+            }
             
             var imageviewFrame = imageView!.frame
             imageviewFrame.origin.x = 0
@@ -125,5 +150,45 @@ class ViewController: UIViewController, GADBannerViewDelegate {
         }
     }
     
+    //iAd func
+    func iAdTimeZoneSupported()->Bool {
+        let iAdTimeZones = "America/;US/;Pacific/;Asia/Tokyo;Europe/".componentsSeparatedByString(";")
+        var myTimeZone = NSTimeZone.localTimeZone().name
+        for zone in iAdTimeZones {
+            if (myTimeZone.hasPrefix(zone)) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+    
+    //iAdBannerViewDelegate
+    func bannerViewWillLoadAd(banner: ADBannerView!) {
+        println("bannerViewWillLoadAd")
+    }
+    
+    func bannerViewDidLoadAd(banner: ADBannerView!) {
+        println("bannerViewDidLoadAd")
+        bannerDisplayed = true
+        relayoutViews()
+    }
+    
+    func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
+        println("didFailToReceiveAd error:\(error)")
+        bannerDisplayed = false
+        relayoutViews()
+    }
+    
+    func bannerViewActionDidFinish(banner: ADBannerView!) {
+        println("bannerViewActionDidFinish")
+        bannerDisplayed = false
+        relayoutViews()
+    }
+    
+    func bannerViewActionShouldBegin(banner: ADBannerView!, willLeaveApplication willLeave: Bool) -> Bool {
+        println("bannerViewActionShouldBegin")
+        return true;
+    }
 }
 
