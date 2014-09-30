@@ -9,10 +9,12 @@
 import UIKit
 import iAd
 
-class ViewController: UIViewController, GADBannerViewDelegate, ADBannerViewDelegate {
+class ViewController: UIViewController, GADBannerViewDelegate, GADInterstitialDelegate,  ADBannerViewDelegate {
     var iAdSupported = false
     var iAdView:ADBannerView?
     var bannerView:GADBannerView?
+    var interstitial:GADInterstitial?
+    var button:UIButton?
     var imageView:UIImageView?
     var timer:NSTimer?
     var loadRequestAllowed = true
@@ -52,6 +54,19 @@ class ViewController: UIViewController, GADBannerViewDelegate, ADBannerViewDeleg
         frame.origin.y = statusbarHeight
         imageView!.frame = frame
         self.view.addSubview(imageView!)
+        
+        //Admob Interstitial
+        if !iAdSupported {
+            interstitial = createAndLoadInterstitial()
+            
+            button = UIButton.buttonWithType(UIButtonType.System) as? UIButton
+            button?.frame = CGRectMake(60, 30, 180, 40)
+            button?.setTitle("<<<点此测试插屏广告>>>", forState: UIControlState.Normal)
+            button?.enabled = false
+            button?.userInteractionEnabled = true
+            button?.addTarget(self, action: "presentInterstitial:", forControlEvents: .TouchUpInside)
+            self.view.addSubview(button!)
+        }
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "AppBecomeActive", name: UIApplicationDidBecomeActiveNotification, object: nil)
         
@@ -133,6 +148,13 @@ class ViewController: UIViewController, GADBannerViewDelegate, ADBannerViewDeleg
             imageviewFrame.origin.x = 0
             imageviewFrame.origin.y = statusbarHeight + bannerFrame.size.height
             imageView!.frame = imageviewFrame
+            
+            //Admob Interstitial button
+            if !iAdSupported {
+                var buttonFrame = button!.frame
+                buttonFrame.origin.y = 80
+                button!.frame = buttonFrame
+            }
         } else {
             var bannerFrame = iAdSupported ? iAdView!.frame : bannerView!.frame
             bannerFrame.origin.x = 0
@@ -147,8 +169,63 @@ class ViewController: UIViewController, GADBannerViewDelegate, ADBannerViewDeleg
             imageviewFrame.origin.x = 0
             imageviewFrame.origin.y = statusbarHeight
             imageView!.frame = imageviewFrame
+            
+            //Admob Interstitial button
+            if !iAdSupported {
+                var buttonFrame = button!.frame
+                buttonFrame.origin.y = 30
+                button!.frame = buttonFrame
+            }
         }
     }
+    
+    //Interstitial func
+    func createAndLoadInterstitial()->GADInterstitial {
+        println("createAndLoadInterstitial")
+        var interstitial = GADInterstitial()
+        interstitial.delegate = self
+        interstitial.adUnitID = "ca-app-pub-6938332798224330/6206234808"
+        interstitial.loadRequest(GADRequest())
+        
+        return interstitial
+    }
+    
+    func presentInterstitial(sender:UIButton!) {
+        if let isReady = interstitial?.isReady {
+            interstitial?.presentFromRootViewController(self)
+        }
+    }
+    
+    //Interstitial delegate
+    func interstitial(ad: GADInterstitial!, didFailToReceiveAdWithError error: GADRequestError!) {
+        println("interstitialDidFailToReceiveAdWithError:\(error.localizedDescription)")
+        button?.enabled = false
+        interstitial = createAndLoadInterstitial()
+    }
+    
+    func interstitialDidReceiveAd(ad: GADInterstitial!) {
+        println("interstitialDidReceiveAd")
+        button?.enabled = true
+    }
+    
+    func interstitialWillDismissScreen(ad: GADInterstitial!) {
+        println("interstitialWillDismissScreen")
+        button?.enabled = false
+        interstitial = createAndLoadInterstitial()
+    }
+    
+    func interstitialDidDismissScreen(ad: GADInterstitial!) {
+        println("interstitialDidDismissScreen")
+    }
+    
+    func interstitialWillLeaveApplication(ad: GADInterstitial!) {
+        println("interstitialWillLeaveApplication")
+    }
+    
+    func interstitialWillPresentScreen(ad: GADInterstitial!) {
+        println("interstitialWillPresentScreen")
+    }
+    
     
     //iAd func
     func iAdTimeZoneSupported()->Bool {
