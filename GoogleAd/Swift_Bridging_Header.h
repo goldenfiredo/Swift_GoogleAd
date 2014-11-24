@@ -12,4 +12,8 @@
 #import "GADBannerView.h"
 #import "GADInterstitialDelegate.h"
 #import "GADInterstitial.h"
+
+#import "FMDatabase.h"
+#import "FMDatabaseAdditions.h"
+
 #endif

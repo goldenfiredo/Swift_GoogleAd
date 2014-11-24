@@ -21,6 +21,8 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADInterstitialDe
     var bannerDisplayed = false
     let statusbarHeight:CGFloat = 20.0
     
+    var demoButton:UIButton?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -60,13 +62,20 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADInterstitialDe
             interstitial = createAndLoadInterstitial()
             
             button = UIButton.buttonWithType(UIButtonType.System) as? UIButton
-            button?.frame = CGRectMake(60, 30, 180, 40)
+            button?.frame = CGRectMake(60, 20, 180, 40)
             button?.setTitle("<<<点此测试插屏广告>>>", forState: UIControlState.Normal)
             button?.enabled = false
             button?.userInteractionEnabled = true
             button?.addTarget(self, action: "presentInterstitial:", forControlEvents: .TouchUpInside)
             self.view.addSubview(button!)
         }
+        
+        demoButton = UIButton.buttonWithType(UIButtonType.System) as? UIButton
+        demoButton?.frame = CGRectMake(40, 50, 240, 40)
+        demoButton?.setTitle("<<<点此测试 Wrapping FMDB>>>", forState: UIControlState.Normal)
+        demoButton?.userInteractionEnabled = true
+        demoButton?.addTarget(self, action: "showDemo:", forControlEvents: .TouchUpInside)
+        self.view.addSubview(demoButton!)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "AppBecomeActive", name: UIApplicationDidBecomeActiveNotification, object: nil)
         
@@ -152,8 +161,12 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADInterstitialDe
             //Admob Interstitial button
             if !iAdSupported {
                 var buttonFrame = button!.frame
-                buttonFrame.origin.y = 80
+                buttonFrame.origin.y = 70
                 button!.frame = buttonFrame
+                
+                buttonFrame = demoButton!.frame
+                buttonFrame.origin.y = 100
+                demoButton!.frame = buttonFrame
             }
         } else {
             var bannerFrame = iAdSupported ? iAdView!.frame : bannerView!.frame
@@ -173,8 +186,12 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADInterstitialDe
             //Admob Interstitial button
             if !iAdSupported {
                 var buttonFrame = button!.frame
-                buttonFrame.origin.y = 30
+                buttonFrame.origin.y = 20
                 button!.frame = buttonFrame
+                
+                buttonFrame = demoButton!.frame
+                buttonFrame.origin.y = 50
+                demoButton!.frame = buttonFrame
             }
         }
     }
@@ -266,6 +283,20 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADInterstitialDe
     func bannerViewActionShouldBegin(banner: ADBannerView!, willLeaveApplication willLeave: Bool) -> Bool {
         println("bannerViewActionShouldBegin")
         return true;
+    }
+    
+    //FMDB
+    func showDemo(sender:UIButton!) {
+        let demoVC = FMDBDemoViewController()
+        let navVC = UINavigationController(rootViewController: demoVC)
+        let backButton = UIBarButtonItem(title: "Close", style: .Plain, target: self, action: "back")
+        demoVC.navigationItem.setLeftBarButtonItem(backButton, animated: true)
+        
+        self.presentViewController(navVC, animated: true, completion: nil)
+    }
+    
+    func back() {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
 

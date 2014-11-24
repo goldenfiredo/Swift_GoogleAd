@@ -16,6 +16,18 @@
 		4D7DFE6A19AD676200284480 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4D7DFE6819AD676200284480 /* README.txt */; };
 		4D7DFE6C19AD677F00284480 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D7DFE6B19AD677E00284480 /* AdSupport.framework */; };
 		4D7DFE6F19AD8EBA00284480 /* admob.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D7DFE6E19AD8EBA00284480 /* admob.png */; };
+		ABC62F6A1A2214AA00013B12 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC62F611A2214AA00013B12 /* FMDatabase.m */; };
+		ABC62F6B1A2214AA00013B12 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC62F631A2214AA00013B12 /* FMDatabaseAdditions.m */; };
+		ABC62F6C1A2214AA00013B12 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC62F651A2214AA00013B12 /* FMDatabasePool.m */; };
+		ABC62F6D1A2214AA00013B12 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC62F671A2214AA00013B12 /* FMDatabaseQueue.m */; };
+		ABC62F6E1A2214AA00013B12 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC62F691A2214AA00013B12 /* FMResultSet.m */; };
+		ABC62F731A22155300013B12 /* EntryDAL.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC62F721A22155300013B12 /* EntryDAL.swift */; };
+		ABC62F751A22156300013B12 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC62F741A22156300013B12 /* Entry.swift */; };
+		ABC62F781A22157600013B12 /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC62F761A22157600013B12 /* DAO.swift */; };
+		ABC62F791A22157600013B12 /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC62F771A22157600013B12 /* DB.swift */; };
+		ABC62F7C1A22168100013B12 /* AddEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC62F7A1A22168100013B12 /* AddEntryViewController.swift */; };
+		ABC62F7D1A22168100013B12 /* FMDBDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC62F7B1A22168100013B12 /* FMDBDemoViewController.swift */; };
+		ABC62F7F1A2217DA00013B12 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ABC62F7E1A2217DA00013B12 /* libsqlite3.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +67,23 @@
 		4D7DFE6B19AD677E00284480 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		4D7DFE6D19AD67C500284480 /* Swift_Bridging_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Swift_Bridging_Header.h; sourceTree = "<group>"; };
 		4D7DFE6E19AD8EBA00284480 /* admob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = admob.png; sourceTree = "<group>"; };
+		ABC62F601A2214AA00013B12 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		ABC62F611A2214AA00013B12 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		ABC62F621A2214AA00013B12 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		ABC62F631A2214AA00013B12 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		ABC62F641A2214AA00013B12 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		ABC62F651A2214AA00013B12 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		ABC62F661A2214AA00013B12 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		ABC62F671A2214AA00013B12 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		ABC62F681A2214AA00013B12 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		ABC62F691A2214AA00013B12 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		ABC62F721A22155300013B12 /* EntryDAL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntryDAL.swift; path = SwiftFMDB/EntryDAL.swift; sourceTree = "<group>"; };
+		ABC62F741A22156300013B12 /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Entry.swift; path = SwiftFMDB/Entry.swift; sourceTree = "<group>"; };
+		ABC62F761A22157600013B12 /* DAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DAO.swift; path = SwiftFMDB/DAO.swift; sourceTree = "<group>"; };
+		ABC62F771A22157600013B12 /* DB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DB.swift; path = SwiftFMDB/DB.swift; sourceTree = "<group>"; };
+		ABC62F7A1A22168100013B12 /* AddEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddEntryViewController.swift; path = SwiftFMDB/AddEntryViewController.swift; sourceTree = "<group>"; };
+		ABC62F7B1A22168100013B12 /* FMDBDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FMDBDemoViewController.swift; path = SwiftFMDB/FMDBDemoViewController.swift; sourceTree = "<group>"; };
+		ABC62F7E1A2217DA00013B12 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABC62F7F1A2217DA00013B12 /* libsqlite3.dylib in Frameworks */,
 				4D7DFE6C19AD677F00284480 /* AdSupport.framework in Frameworks */,
 				4D7DFE6919AD676200284480 /* libGoogleAdMobAds.a in Frameworks */,
 			);
@@ -80,7 +110,7 @@
 		4D7DFE2F19AD66F100284480 = {
 			isa = PBXGroup;
 			children = (
-				4D7DFE6B19AD677E00284480 /* AdSupport.framework */,
+				ABC62F5E1A22147B00013B12 /* SwiftFMDB */,
 				4D7DFE3A19AD66F200284480 /* GoogleAd */,
 				4D7DFE4D19AD66F300284480 /* GoogleAdTests */,
 				4D7DFE3919AD66F200284480 /* Products */,
@@ -99,6 +129,7 @@
 		4D7DFE3A19AD66F200284480 /* GoogleAd */ = {
 			isa = PBXGroup;
 			children = (
+				4D7DFE6B19AD677E00284480 /* AdSupport.framework */,
 				4D7DFE6E19AD8EBA00284480 /* admob.png */,
 				4D7DFE5A19AD676200284480 /* GoogleAdMobSdk */,
 				4D7DFE3D19AD66F200284480 /* AppDelegate.swift */,
@@ -156,6 +187,63 @@
 			);
 			path = GoogleAdMobSdk;
 			sourceTree = SOURCE_ROOT;
+		};
+		ABC62F5E1A22147B00013B12 /* SwiftFMDB */ = {
+			isa = PBXGroup;
+			children = (
+				ABC62F7E1A2217DA00013B12 /* libsqlite3.dylib */,
+				ABC62F7A1A22168100013B12 /* AddEntryViewController.swift */,
+				ABC62F7B1A22168100013B12 /* FMDBDemoViewController.swift */,
+				ABC62F711A22153F00013B12 /* DAL */,
+				ABC62F701A22153800013B12 /* DAO */,
+				ABC62F6F1A22152F00013B12 /* Model */,
+				ABC62F5F1A2214AA00013B12 /* FMDB */,
+			);
+			name = SwiftFMDB;
+			sourceTree = "<group>";
+		};
+		ABC62F5F1A2214AA00013B12 /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				ABC62F601A2214AA00013B12 /* FMDatabase.h */,
+				ABC62F611A2214AA00013B12 /* FMDatabase.m */,
+				ABC62F621A2214AA00013B12 /* FMDatabaseAdditions.h */,
+				ABC62F631A2214AA00013B12 /* FMDatabaseAdditions.m */,
+				ABC62F641A2214AA00013B12 /* FMDatabasePool.h */,
+				ABC62F651A2214AA00013B12 /* FMDatabasePool.m */,
+				ABC62F661A2214AA00013B12 /* FMDatabaseQueue.h */,
+				ABC62F671A2214AA00013B12 /* FMDatabaseQueue.m */,
+				ABC62F681A2214AA00013B12 /* FMResultSet.h */,
+				ABC62F691A2214AA00013B12 /* FMResultSet.m */,
+			);
+			name = FMDB;
+			path = SwiftFMDB/FMDB;
+			sourceTree = "<group>";
+		};
+		ABC62F6F1A22152F00013B12 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ABC62F741A22156300013B12 /* Entry.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		ABC62F701A22153800013B12 /* DAO */ = {
+			isa = PBXGroup;
+			children = (
+				ABC62F761A22157600013B12 /* DAO.swift */,
+				ABC62F771A22157600013B12 /* DB.swift */,
+			);
+			name = DAO;
+			sourceTree = "<group>";
+		};
+		ABC62F711A22153F00013B12 /* DAL */ = {
+			isa = PBXGroup;
+			children = (
+				ABC62F721A22155300013B12 /* EntryDAL.swift */,
+			);
+			name = DAL;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -258,8 +346,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABC62F6A1A2214AA00013B12 /* FMDatabase.m in Sources */,
+				ABC62F791A22157600013B12 /* DB.swift in Sources */,
 				4D7DFE4019AD66F200284480 /* ViewController.swift in Sources */,
+				ABC62F6E1A2214AA00013B12 /* FMResultSet.m in Sources */,
+				ABC62F6C1A2214AA00013B12 /* FMDatabasePool.m in Sources */,
+				ABC62F781A22157600013B12 /* DAO.swift in Sources */,
+				ABC62F7D1A22168100013B12 /* FMDBDemoViewController.swift in Sources */,
+				ABC62F731A22155300013B12 /* EntryDAL.swift in Sources */,
 				4D7DFE3E19AD66F200284480 /* AppDelegate.swift in Sources */,
+				ABC62F751A22156300013B12 /* Entry.swift in Sources */,
+				ABC62F7C1A22168100013B12 /* AddEntryViewController.swift in Sources */,
+				ABC62F6B1A2214AA00013B12 /* FMDatabaseAdditions.m in Sources */,
+				ABC62F6D1A2214AA00013B12 /* FMDatabaseQueue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
