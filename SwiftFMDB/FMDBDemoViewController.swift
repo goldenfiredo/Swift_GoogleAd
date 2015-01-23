@@ -57,7 +57,7 @@ class FMDBDemoViewController : UITableViewController, UITableViewDataSource, UIT
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let index = indexPath.row
         var cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: nil)
-        cell.textLabel.text = data[index].name
+        cell.textLabel?.text = data[index].name
         cell.detailTextLabel?.text = data[index].description
         
         return cell

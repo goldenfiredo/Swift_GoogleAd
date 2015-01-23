@@ -16,6 +16,12 @@
 		4D7DFE6A19AD676200284480 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4D7DFE6819AD676200284480 /* README.txt */; };
 		4D7DFE6C19AD677F00284480 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D7DFE6B19AD677E00284480 /* AdSupport.framework */; };
 		4D7DFE6F19AD8EBA00284480 /* admob.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D7DFE6E19AD8EBA00284480 /* admob.png */; };
+		4DAFE5A81A7200780099FC0D /* CoreDataDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAFE5A71A7200780099FC0D /* CoreDataDemoViewController.swift */; };
+		4DAFE5B01A722EB60099FC0D /* CoreDataContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAFE5AA1A722EB60099FC0D /* CoreDataContext.swift */; };
+		4DAFE5B11A722EB60099FC0D /* CoreDataDAL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAFE5AB1A722EB60099FC0D /* CoreDataDAL.swift */; };
+		4DAFE5B21A722EB60099FC0D /* CoreDataDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAFE5AC1A722EB60099FC0D /* CoreDataDAO.swift */; };
+		4DAFE5B41A722EB60099FC0D /* PersonModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAFE5AF1A722EB60099FC0D /* PersonModal.swift */; };
+		4DAFE5B71A723C470099FC0D /* Person.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4DAFE5B51A723C470099FC0D /* Person.xcdatamodeld */; };
 		ABC62F6A1A2214AA00013B12 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC62F611A2214AA00013B12 /* FMDatabase.m */; };
 		ABC62F6B1A2214AA00013B12 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC62F631A2214AA00013B12 /* FMDatabaseAdditions.m */; };
 		ABC62F6C1A2214AA00013B12 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC62F651A2214AA00013B12 /* FMDatabasePool.m */; };
@@ -67,6 +73,12 @@
 		4D7DFE6B19AD677E00284480 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		4D7DFE6D19AD67C500284480 /* Swift_Bridging_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Swift_Bridging_Header.h; sourceTree = "<group>"; };
 		4D7DFE6E19AD8EBA00284480 /* admob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = admob.png; sourceTree = "<group>"; };
+		4DAFE5A71A7200780099FC0D /* CoreDataDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataDemoViewController.swift; sourceTree = "<group>"; };
+		4DAFE5AA1A722EB60099FC0D /* CoreDataContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataContext.swift; sourceTree = "<group>"; };
+		4DAFE5AB1A722EB60099FC0D /* CoreDataDAL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataDAL.swift; sourceTree = "<group>"; };
+		4DAFE5AC1A722EB60099FC0D /* CoreDataDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataDAO.swift; sourceTree = "<group>"; };
+		4DAFE5AF1A722EB60099FC0D /* PersonModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonModal.swift; sourceTree = "<group>"; };
+		4DAFE5B61A723C470099FC0D /* Person.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Person.xcdatamodel; sourceTree = "<group>"; };
 		ABC62F601A2214AA00013B12 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		ABC62F611A2214AA00013B12 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		ABC62F621A2214AA00013B12 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -110,6 +122,7 @@
 		4D7DFE2F19AD66F100284480 = {
 			isa = PBXGroup;
 			children = (
+				4DAFE5A61A7200780099FC0D /* SwiftCoreData */,
 				ABC62F5E1A22147B00013B12 /* SwiftFMDB */,
 				4D7DFE3A19AD66F200284480 /* GoogleAd */,
 				4D7DFE4D19AD66F300284480 /* GoogleAdTests */,
@@ -187,6 +200,27 @@
 			);
 			path = GoogleAdMobSdk;
 			sourceTree = SOURCE_ROOT;
+		};
+		4DAFE5A61A7200780099FC0D /* SwiftCoreData */ = {
+			isa = PBXGroup;
+			children = (
+				4DAFE5A91A722EB60099FC0D /* CoreData */,
+				4DAFE5A71A7200780099FC0D /* CoreDataDemoViewController.swift */,
+			);
+			path = SwiftCoreData;
+			sourceTree = "<group>";
+		};
+		4DAFE5A91A722EB60099FC0D /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				4DAFE5AA1A722EB60099FC0D /* CoreDataContext.swift */,
+				4DAFE5AB1A722EB60099FC0D /* CoreDataDAL.swift */,
+				4DAFE5AC1A722EB60099FC0D /* CoreDataDAO.swift */,
+				4DAFE5AF1A722EB60099FC0D /* PersonModal.swift */,
+				4DAFE5B51A723C470099FC0D /* Person.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
 		};
 		ABC62F5E1A22147B00013B12 /* SwiftFMDB */ = {
 			isa = PBXGroup;
@@ -346,12 +380,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DAFE5B21A722EB60099FC0D /* CoreDataDAO.swift in Sources */,
+				4DAFE5B11A722EB60099FC0D /* CoreDataDAL.swift in Sources */,
 				ABC62F6A1A2214AA00013B12 /* FMDatabase.m in Sources */,
+				4DAFE5B01A722EB60099FC0D /* CoreDataContext.swift in Sources */,
 				ABC62F791A22157600013B12 /* DB.swift in Sources */,
 				4D7DFE4019AD66F200284480 /* ViewController.swift in Sources */,
+				4DAFE5B41A722EB60099FC0D /* PersonModal.swift in Sources */,
 				ABC62F6E1A2214AA00013B12 /* FMResultSet.m in Sources */,
 				ABC62F6C1A2214AA00013B12 /* FMDatabasePool.m in Sources */,
+				4DAFE5B71A723C470099FC0D /* Person.xcdatamodeld in Sources */,
 				ABC62F781A22157600013B12 /* DAO.swift in Sources */,
+				4DAFE5A81A7200780099FC0D /* CoreDataDemoViewController.swift in Sources */,
 				ABC62F7D1A22168100013B12 /* FMDBDemoViewController.swift in Sources */,
 				ABC62F731A22155300013B12 /* EntryDAL.swift in Sources */,
 				4D7DFE3E19AD66F200284480 /* AppDelegate.swift in Sources */,
@@ -570,6 +610,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4DAFE5B51A723C470099FC0D /* Person.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4DAFE5B61A723C470099FC0D /* Person.xcdatamodel */,
+			);
+			currentVersion = 4DAFE5B61A723C470099FC0D /* Person.xcdatamodel */;
+			path = Person.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4D7DFE3019AD66F200284480 /* Project object */;
 }

@@ -23,6 +23,8 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADInterstitialDe
     
     var demoButton:UIButton?
     
+    var demoCoreDataButton:UIButton?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -62,7 +64,7 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADInterstitialDe
             interstitial = createAndLoadInterstitial()
             
             button = UIButton.buttonWithType(UIButtonType.System) as? UIButton
-            button?.frame = CGRectMake(60, 20, 180, 40)
+            button?.frame = CGRectMake(60, 20, 180, 20)
             button?.setTitle("<<<点此测试插屏广告>>>", forState: UIControlState.Normal)
             button?.enabled = false
             button?.userInteractionEnabled = true
@@ -71,11 +73,18 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADInterstitialDe
         }
         
         demoButton = UIButton.buttonWithType(UIButtonType.System) as? UIButton
-        demoButton?.frame = CGRectMake(40, 50, 240, 40)
+        demoButton?.frame = CGRectMake(40, 45, 240, 20)
         demoButton?.setTitle("<<<点此测试 Wrapping FMDB>>>", forState: UIControlState.Normal)
         demoButton?.userInteractionEnabled = true
         demoButton?.addTarget(self, action: "showDemo:", forControlEvents: .TouchUpInside)
         self.view.addSubview(demoButton!)
+        
+        demoCoreDataButton = UIButton.buttonWithType(UIButtonType.System) as? UIButton
+        demoCoreDataButton?.frame = CGRectMake(20, 70, 280, 20)
+        demoCoreDataButton?.setTitle("<<<点此测试 Wrapping CoreData>>>", forState: UIControlState.Normal)
+        demoCoreDataButton?.userInteractionEnabled = true
+        demoCoreDataButton?.addTarget(self, action: "showCoreDataDemo:", forControlEvents: .TouchUpInside)
+        self.view.addSubview(demoCoreDataButton!)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "AppBecomeActive", name: UIApplicationDidBecomeActiveNotification, object: nil)
         
@@ -165,8 +174,12 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADInterstitialDe
                 button!.frame = buttonFrame
                 
                 buttonFrame = demoButton!.frame
-                buttonFrame.origin.y = 100
+                buttonFrame.origin.y = 95
                 demoButton!.frame = buttonFrame
+                
+                buttonFrame = demoCoreDataButton!.frame
+                buttonFrame.origin.y = 120
+                demoCoreDataButton!.frame = buttonFrame
             }
         } else {
             var bannerFrame = iAdSupported ? iAdView!.frame : bannerView!.frame
@@ -190,8 +203,12 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADInterstitialDe
                 button!.frame = buttonFrame
                 
                 buttonFrame = demoButton!.frame
-                buttonFrame.origin.y = 50
+                buttonFrame.origin.y = 45
                 demoButton!.frame = buttonFrame
+                
+                buttonFrame = demoCoreDataButton!.frame
+                buttonFrame.origin.y = 70
+                demoCoreDataButton!.frame = buttonFrame
             }
         }
     }
@@ -297,6 +314,16 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADInterstitialDe
     
     func back() {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    //CoreData
+    func showCoreDataDemo(sender:UIButton!) {
+        let demoVC = CoreDataDemoViewController()
+        let navVC = UINavigationController(rootViewController: demoVC)
+        let backButton = UIBarButtonItem(title: "Close", style: .Plain, target: self, action: "back")
+        demoVC.navigationItem.setLeftBarButtonItem(backButton, animated: true)
+        
+        self.presentViewController(navVC, animated: true, completion: nil)
     }
 }
 
