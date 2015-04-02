@@ -12,8 +12,6 @@
 		4D7DFE4319AD66F200284480 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D7DFE4119AD66F200284480 /* Main.storyboard */; };
 		4D7DFE4519AD66F200284480 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D7DFE4419AD66F200284480 /* Images.xcassets */; };
 		4D7DFE5119AD66F300284480 /* GoogleAdTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7DFE5019AD66F300284480 /* GoogleAdTests.swift */; };
-		4D7DFE6919AD676200284480 /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D7DFE6719AD676200284480 /* libGoogleAdMobAds.a */; };
-		4D7DFE6A19AD676200284480 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4D7DFE6819AD676200284480 /* README.txt */; };
 		4D7DFE6C19AD677F00284480 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D7DFE6B19AD677E00284480 /* AdSupport.framework */; };
 		4D7DFE6F19AD8EBA00284480 /* admob.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D7DFE6E19AD8EBA00284480 /* admob.png */; };
 		4DAFE5A81A7200780099FC0D /* CoreDataDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAFE5A71A7200780099FC0D /* CoreDataDemoViewController.swift */; };
@@ -22,6 +20,10 @@
 		4DAFE5B21A722EB60099FC0D /* CoreDataDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAFE5AC1A722EB60099FC0D /* CoreDataDAO.swift */; };
 		4DAFE5B41A722EB60099FC0D /* PersonModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAFE5AF1A722EB60099FC0D /* PersonModal.swift */; };
 		4DAFE5B71A723C470099FC0D /* Person.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4DAFE5B51A723C470099FC0D /* Person.xcdatamodeld */; };
+		AB63FC8E1ACC368E008E6E94 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB63FC8D1ACC368E008E6E94 /* GoogleMobileAds.framework */; };
+		AB63FC971ACC38A7008E6E94 /* Marquee.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63FC911ACC38A7008E6E94 /* Marquee.swift */; };
+		AB63FC981ACC38A7008E6E94 /* TextFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB63FC931ACC38A7008E6E94 /* TextFlowView.m */; };
+		AB63FC991ACC38A7008E6E94 /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB63FC961ACC38A7008E6E94 /* Toast+UIView.m */; };
 		ABC62F6A1A2214AA00013B12 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC62F611A2214AA00013B12 /* FMDatabase.m */; };
 		ABC62F6B1A2214AA00013B12 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC62F631A2214AA00013B12 /* FMDatabaseAdditions.m */; };
 		ABC62F6C1A2214AA00013B12 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC62F651A2214AA00013B12 /* FMDatabasePool.m */; };
@@ -56,20 +58,6 @@
 		4D7DFE4A19AD66F200284480 /* GoogleAdTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoogleAdTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D7DFE4F19AD66F300284480 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D7DFE5019AD66F300284480 /* GoogleAdTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAdTests.swift; sourceTree = "<group>"; };
-		4D7DFE5B19AD676200284480 /* GADAdMobExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdMobExtras.h; sourceTree = "<group>"; };
-		4D7DFE5C19AD676200284480 /* GADAdNetworkExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdNetworkExtras.h; sourceTree = "<group>"; };
-		4D7DFE5D19AD676200284480 /* GADAdSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdSize.h; sourceTree = "<group>"; };
-		4D7DFE5E19AD676200284480 /* GADBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADBannerView.h; sourceTree = "<group>"; };
-		4D7DFE5F19AD676200284480 /* GADBannerViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADBannerViewDelegate.h; sourceTree = "<group>"; };
-		4D7DFE6019AD676200284480 /* GADInAppPurchase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADInAppPurchase.h; sourceTree = "<group>"; };
-		4D7DFE6119AD676200284480 /* GADInAppPurchaseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADInAppPurchaseDelegate.h; sourceTree = "<group>"; };
-		4D7DFE6219AD676200284480 /* GADInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADInterstitial.h; sourceTree = "<group>"; };
-		4D7DFE6319AD676200284480 /* GADInterstitialDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADInterstitialDelegate.h; sourceTree = "<group>"; };
-		4D7DFE6419AD676200284480 /* GADModules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADModules.h; sourceTree = "<group>"; };
-		4D7DFE6519AD676200284480 /* GADRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequest.h; sourceTree = "<group>"; };
-		4D7DFE6619AD676200284480 /* GADRequestError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequestError.h; sourceTree = "<group>"; };
-		4D7DFE6719AD676200284480 /* libGoogleAdMobAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAdMobAds.a; sourceTree = "<group>"; };
-		4D7DFE6819AD676200284480 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		4D7DFE6B19AD677E00284480 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		4D7DFE6D19AD67C500284480 /* Swift_Bridging_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Swift_Bridging_Header.h; sourceTree = "<group>"; };
 		4D7DFE6E19AD8EBA00284480 /* admob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = admob.png; sourceTree = "<group>"; };
@@ -79,6 +67,12 @@
 		4DAFE5AC1A722EB60099FC0D /* CoreDataDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataDAO.swift; sourceTree = "<group>"; };
 		4DAFE5AF1A722EB60099FC0D /* PersonModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonModal.swift; sourceTree = "<group>"; };
 		4DAFE5B61A723C470099FC0D /* Person.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Person.xcdatamodel; sourceTree = "<group>"; };
+		AB63FC8D1ACC368E008E6E94 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
+		AB63FC911ACC38A7008E6E94 /* Marquee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Marquee.swift; sourceTree = "<group>"; };
+		AB63FC921ACC38A7008E6E94 /* TextFlowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFlowView.h; sourceTree = "<group>"; };
+		AB63FC931ACC38A7008E6E94 /* TextFlowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFlowView.m; sourceTree = "<group>"; };
+		AB63FC951ACC38A7008E6E94 /* Toast+UIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Toast+UIView.h"; sourceTree = "<group>"; };
+		AB63FC961ACC38A7008E6E94 /* Toast+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Toast+UIView.m"; sourceTree = "<group>"; };
 		ABC62F601A2214AA00013B12 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		ABC62F611A2214AA00013B12 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		ABC62F621A2214AA00013B12 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -103,9 +97,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB63FC8E1ACC368E008E6E94 /* GoogleMobileAds.framework in Frameworks */,
 				ABC62F7F1A2217DA00013B12 /* libsqlite3.dylib in Frameworks */,
 				4D7DFE6C19AD677F00284480 /* AdSupport.framework in Frameworks */,
-				4D7DFE6919AD676200284480 /* libGoogleAdMobAds.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +116,7 @@
 		4D7DFE2F19AD66F100284480 = {
 			isa = PBXGroup;
 			children = (
+				AB63FC8F1ACC38A7008E6E94 /* UIComponents */,
 				4DAFE5A61A7200780099FC0D /* SwiftCoreData */,
 				ABC62F5E1A22147B00013B12 /* SwiftFMDB */,
 				4D7DFE3A19AD66F200284480 /* GoogleAd */,
@@ -183,20 +178,7 @@
 		4D7DFE5A19AD676200284480 /* GoogleAdMobSdk */ = {
 			isa = PBXGroup;
 			children = (
-				4D7DFE5B19AD676200284480 /* GADAdMobExtras.h */,
-				4D7DFE5C19AD676200284480 /* GADAdNetworkExtras.h */,
-				4D7DFE5D19AD676200284480 /* GADAdSize.h */,
-				4D7DFE5E19AD676200284480 /* GADBannerView.h */,
-				4D7DFE5F19AD676200284480 /* GADBannerViewDelegate.h */,
-				4D7DFE6019AD676200284480 /* GADInAppPurchase.h */,
-				4D7DFE6119AD676200284480 /* GADInAppPurchaseDelegate.h */,
-				4D7DFE6219AD676200284480 /* GADInterstitial.h */,
-				4D7DFE6319AD676200284480 /* GADInterstitialDelegate.h */,
-				4D7DFE6419AD676200284480 /* GADModules.h */,
-				4D7DFE6519AD676200284480 /* GADRequest.h */,
-				4D7DFE6619AD676200284480 /* GADRequestError.h */,
-				4D7DFE6719AD676200284480 /* libGoogleAdMobAds.a */,
-				4D7DFE6819AD676200284480 /* README.txt */,
+				AB63FC8D1ACC368E008E6E94 /* GoogleMobileAds.framework */,
 			);
 			path = GoogleAdMobSdk;
 			sourceTree = SOURCE_ROOT;
@@ -220,6 +202,34 @@
 				4DAFE5B51A723C470099FC0D /* Person.xcdatamodeld */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		AB63FC8F1ACC38A7008E6E94 /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				AB63FC901ACC38A7008E6E94 /* Marquee */,
+				AB63FC941ACC38A7008E6E94 /* Toast */,
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		AB63FC901ACC38A7008E6E94 /* Marquee */ = {
+			isa = PBXGroup;
+			children = (
+				AB63FC911ACC38A7008E6E94 /* Marquee.swift */,
+				AB63FC921ACC38A7008E6E94 /* TextFlowView.h */,
+				AB63FC931ACC38A7008E6E94 /* TextFlowView.m */,
+			);
+			path = Marquee;
+			sourceTree = "<group>";
+		};
+		AB63FC941ACC38A7008E6E94 /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				AB63FC951ACC38A7008E6E94 /* Toast+UIView.h */,
+				AB63FC961ACC38A7008E6E94 /* Toast+UIView.m */,
+			);
+			path = Toast;
 			sourceTree = "<group>";
 		};
 		ABC62F5E1A22147B00013B12 /* SwiftFMDB */ = {
@@ -360,7 +370,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D7DFE4319AD66F200284480 /* Main.storyboard in Resources */,
-				4D7DFE6A19AD676200284480 /* README.txt in Resources */,
 				4D7DFE4519AD66F200284480 /* Images.xcassets in Resources */,
 				4D7DFE6F19AD8EBA00284480 /* admob.png in Resources */,
 			);
@@ -386,12 +395,15 @@
 				4DAFE5B01A722EB60099FC0D /* CoreDataContext.swift in Sources */,
 				ABC62F791A22157600013B12 /* DB.swift in Sources */,
 				4D7DFE4019AD66F200284480 /* ViewController.swift in Sources */,
+				AB63FC991ACC38A7008E6E94 /* Toast+UIView.m in Sources */,
+				AB63FC981ACC38A7008E6E94 /* TextFlowView.m in Sources */,
 				4DAFE5B41A722EB60099FC0D /* PersonModal.swift in Sources */,
 				ABC62F6E1A2214AA00013B12 /* FMResultSet.m in Sources */,
 				ABC62F6C1A2214AA00013B12 /* FMDatabasePool.m in Sources */,
 				4DAFE5B71A723C470099FC0D /* Person.xcdatamodeld in Sources */,
 				ABC62F781A22157600013B12 /* DAO.swift in Sources */,
 				4DAFE5A81A7200780099FC0D /* CoreDataDemoViewController.swift in Sources */,
+				AB63FC971ACC38A7008E6E94 /* Marquee.swift in Sources */,
 				ABC62F7D1A22168100013B12 /* FMDBDemoViewController.swift in Sources */,
 				ABC62F731A22155300013B12 /* EntryDAL.swift in Sources */,
 				4D7DFE3E19AD66F200284480 /* AppDelegate.swift in Sources */,
@@ -514,6 +526,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GoogleAdMobSdk",
+				);
 				INFOPLIST_FILE = GoogleAd/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -532,7 +548,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GoogleAdMobSdk",
+				);
 				INFOPLIST_FILE = GoogleAd/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

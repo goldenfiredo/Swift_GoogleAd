@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import GoogleMobileAds
 
 class FMDBDemoViewController : UITableViewController, UITableViewDataSource, UITableViewDelegate, GADInterstitialDelegate {
     let dal = EntryDAL()

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import GoogleMobileAds
 
 class CoreDataDemoViewController : UITableViewController, UITableViewDataSource, UITableViewDelegate, GADInterstitialDelegate {
     

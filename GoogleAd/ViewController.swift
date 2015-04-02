@@ -8,6 +8,9 @@
 
 import UIKit
 import iAd
+import GoogleMobileAds
+
+let marqueeText = "本呆猫包含Google条幅广告、插屏广告、Apple条幅广告、Swift封装CoreData、Swift封装FMDB、Toast和跑马灯..."
 
 class ViewController: UIViewController, GADBannerViewDelegate, GADInterstitialDelegate,  ADBannerViewDelegate {
     var iAdSupported = false
@@ -86,11 +89,19 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADInterstitialDe
         demoCoreDataButton?.addTarget(self, action: "showCoreDataDemo:", forControlEvents: .TouchUpInside)
         self.view.addSubview(demoCoreDataButton!)
         
+        Marquee(superview: self.view , text: marqueeText)
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "AppBecomeActive", name: UIApplicationDidBecomeActiveNotification, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "AppResignActive", name: UIApplicationWillResignActiveNotification, object: nil)
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.view.makeToast("Ready for demo")
+    }
+    
     func GoogleAdRequestTimer() {
         if iAdSupported {
             return;

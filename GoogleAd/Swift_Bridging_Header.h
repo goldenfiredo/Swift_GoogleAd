@@ -9,11 +9,14 @@
 #ifndef GoogleAd_Swift_Bridging_Header_h
 #define GoogleAd_Swift_Bridging_Header_h
 
-#import "GADBannerView.h"
-#import "GADInterstitialDelegate.h"
-#import "GADInterstitial.h"
+#import "GoogleMobileAds/GADBannerView.h"
+#import "GoogleMobileAds/GADInterstitialDelegate.h"
+#import "GoogleMobileAds/GADInterstitial.h"
 
 #import "FMDatabase.h"
 #import "FMDatabaseAdditions.h"
+
+#import "TextFlowView.h"
+#import "Toast+UIView.h"
 
 #endif
