@@ -40,7 +40,6 @@ class DB {
         let table_name = DB.tableName
         //let documentPath : AnyObject = NSSearchPathForDirectoriesInDomains(.DocumentDirectory,.UserDomainMask,true)[0]
         //let dbPath:String = documentPath.stringByAppendingPathComponent("demo.db")
-        
         let url = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.test.abc")
         if url == nil {
             return false

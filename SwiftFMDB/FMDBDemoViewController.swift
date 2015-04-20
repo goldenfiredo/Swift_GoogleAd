@@ -26,6 +26,8 @@ class FMDBDemoViewController : UITableViewController, UITableViewDataSource, UIT
         
         interstitial = createAndLoadInterstitial()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "displayInterstitial", name: "kDisplayInterstitialNotification", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refresh", name: "kRefreshFMDBNotification", object: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -112,5 +114,12 @@ class FMDBDemoViewController : UITableViewController, UITableViewDataSource, UIT
         if let isReady = interstitial?.isReady {
             interstitial?.presentFromRootViewController(self)
         }
+    }
+    
+    func refresh() {
+        println("in refresh")
+        
+        data = dal.getAllEntries()
+        self.tableView.reloadData()
     }
 }

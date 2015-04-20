@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="6751" systemVersion="13E28" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="GoogleAd_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <table alignment="left" id="N5G-yS-a5J">
+                            <items>
+                                <tableRow identifier="Row" id="KFY-A7-fGs" customClass="RowController" customModule="GoogleAd_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="40.5" alignment="left" id="Rt7-hm-RmR">
+                                        <items>
+                                            <label height="20" alignment="center" verticalAlignment="bottom" text="Label" textAlignment="center" id="2XC-Cc-Cxi">
+                                                <fontDescription key="font" type="system" pointSize="12"/>
+                                            </label>
+                                            <label alignment="left" text="Label" textAlignment="center" id="Ul0-so-EmP">
+                                                <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                                            </label>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="desc" destination="2XC-Cc-Cxi" id="CKC-V1-6vM"/>
+                                        <outlet property="name" destination="Ul0-so-EmP" id="uZv-mP-R93"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                        <button width="1" height="25" alignment="left" title="Refresh" id="MoR-ez-gao">
+                            <connections>
+                                <action selector="refresh" destination="AgC-eL-Hgc" id="HES-1l-Gu9"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="table" destination="N5G-yS-a5J" id="at6-h1-orX"/>
+                    </connections>
+                </controller>
+            </objects>
+        </scene>
+        <!--DetailEntry-->
+        <scene sceneID="LF9-dQ-lhl">
+            <objects>
+                <controller identifier="DetailEntry" id="QEh-7L-waH" customClass="DetailEntryController" customModule="GoogleAd_WatchKit_Extension">
+                    <items>
+                        <label alignment="left" text="Name:" id="9rJ-q4-XEY"/>
+                        <label width="131" alignment="left" text="Label" id="wOk-GW-AKf"/>
+                        <label alignment="left" text="Description:" id="IsX-xN-26T"/>
+                        <label width="134" alignment="left" text="Label" id="RCz-Ks-l86"/>
+                        <group width="1" alignment="left" verticalAlignment="bottom" id="h1U-dO-A69">
+                            <items>
+                                <button alignment="left" verticalAlignment="bottom" title="Back" id="5dq-HA-cie">
+                                    <connections>
+                                        <action selector="back" destination="QEh-7L-waH" id="Sbs-yC-Cnp"/>
+                                    </connections>
+                                </button>
+                                <button alignment="right" verticalAlignment="bottom" title="Delete it!" id="mY1-Eu-Tvq">
+                                    <connections>
+                                        <action selector="delete" destination="QEh-7L-waH" id="2jf-DU-v5g"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="descLabel" destination="RCz-Ks-l86" id="rYE-Gu-cWy"/>
+                        <outlet property="nameLabel" destination="wOk-GW-AKf" id="D6D-CH-rbM"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="439" y="136"/>
+        </scene>
+    </scenes>
+</document>

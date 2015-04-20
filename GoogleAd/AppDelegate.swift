@@ -41,6 +41,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func application(application: UIApplication, handleWatchKitExtensionRequest
+        userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]!) -> Void)?) {
+            println("in handleWatchKitExtensionRequest")
+            
+            let info = userInfo as? [String: String]
+            let command = info?["command"]
+            if command != nil && command == "Refresh" {
+                println("post kRefreshFMDBNotification")
+                NSNotificationCenter.defaultCenter().postNotificationName("kRefreshFMDBNotification", object: nil)
+                
+                reply.map { $0(["response" : "success"]) }
+                
+            } else {
+                reply.map { $0(["response" : "fail"]) }
+            }
+    }
 
 }
 
