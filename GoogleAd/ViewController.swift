@@ -10,7 +10,7 @@ import UIKit
 import iAd
 import GoogleMobileAds
 
-let marqueeText = "本呆猫包含Google条幅广告、插屏广告、Apple条幅广告、Swift封装CoreData、Swift封装FMDB、Toast和跑马灯..."
+let marqueeText = "本呆猫包含Google条幅广告、插屏广告、Apple条幅广告、Swift封装CoreData、Swift封装FMDB、Apple Watch Data Sharing/Communication、Toast和跑马灯..."
 
 class ViewController: UIViewController, GADBannerViewDelegate, GADInterstitialDelegate,  ADBannerViewDelegate {
     var iAdSupported = false
