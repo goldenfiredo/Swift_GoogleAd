@@ -42,23 +42,63 @@
                 </controller>
             </objects>
         </scene>
+        <!--Glance Interface Controller-->
+        <scene sceneID="khT-HF-bdg">
+            <objects>
+                <glanceController id="97E-to-V2u" customClass="GlanceController" customModule="GoogleAd_WatchKit_Extension">
+                    <items>
+                        <group alignment="left" id="0IU-AV-0L3">
+                            <items>
+                                <label width="122" height="43" alignment="left" text="GoogleAd" textAlignment="center" id="jnr-UX-wvn">
+                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" type="italicSystem" pointSize="20"/>
+                                </label>
+                            </items>
+                        </group>
+                        <group alignment="left" id="EOq-wh-mff">
+                            <items>
+                                <label alignment="left" text="Name" id="cdf-cC-KJo">
+                                    <fontDescription key="font" type="system" pointSize="18"/>
+                                </label>
+                                <label alignment="left" verticalAlignment="center" text="Description" numberOfLines="2" id="cDJ-OM-K8R"/>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="descLabel" destination="cDJ-OM-K8R" id="xA7-2W-ZEw"/>
+                        <outlet property="nameLabel" destination="cdf-cC-KJo" id="tCG-p0-yt6"/>
+                    </connections>
+                </glanceController>
+            </objects>
+            <point key="canvasLocation" x="57" y="439"/>
+        </scene>
         <!--DetailEntry-->
         <scene sceneID="LF9-dQ-lhl">
             <objects>
                 <controller identifier="DetailEntry" id="QEh-7L-waH" customClass="DetailEntryController" customModule="GoogleAd_WatchKit_Extension">
                     <items>
                         <label alignment="left" text="Name:" id="9rJ-q4-XEY"/>
-                        <label width="131" alignment="left" text="Label" id="wOk-GW-AKf"/>
+                        <label width="131" alignment="left" text="Label" id="wOk-GW-AKf">
+                            <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                        </label>
                         <label alignment="left" text="Description:" id="IsX-xN-26T"/>
                         <label width="134" alignment="left" text="Label" id="RCz-Ks-l86"/>
+                        <switch width="1" height="25" alignment="left" verticalAlignment="center" title="Show in Glance" id="kcp-gs-V1C">
+                            <fontDescription key="font" type="system" pointSize="10"/>
+                            <connections>
+                                <action selector="selectedSwitchValueChanged:" destination="QEh-7L-waH" id="8mD-Tk-xkx"/>
+                            </connections>
+                        </switch>
                         <group width="1" alignment="left" verticalAlignment="bottom" id="h1U-dO-A69">
                             <items>
-                                <button alignment="left" verticalAlignment="bottom" title="Back" id="5dq-HA-cie">
+                                <button height="27" alignment="left" verticalAlignment="bottom" hidden="YES" title="Back" id="5dq-HA-cie">
+                                    <fontDescription key="font" type="system" pointSize="12"/>
                                     <connections>
                                         <action selector="back" destination="QEh-7L-waH" id="Sbs-yC-Cnp"/>
                                     </connections>
                                 </button>
-                                <button alignment="right" verticalAlignment="bottom" title="Delete it!" id="mY1-Eu-Tvq">
+                                <button height="27" alignment="left" verticalAlignment="bottom" title="Delete it!" id="mY1-Eu-Tvq">
+                                    <fontDescription key="font" type="system" pointSize="12"/>
                                     <connections>
                                         <action selector="delete" destination="QEh-7L-waH" id="2jf-DU-v5g"/>
                                     </connections>
@@ -69,10 +109,11 @@
                     <connections>
                         <outlet property="descLabel" destination="RCz-Ks-l86" id="rYE-Gu-cWy"/>
                         <outlet property="nameLabel" destination="wOk-GW-AKf" id="D6D-CH-rbM"/>
+                        <outlet property="selectedSwitch" destination="kcp-gs-V1C" id="WcD-yG-Jfg"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="439" y="136"/>
+            <point key="canvasLocation" x="439" y="124"/>
         </scene>
     </scenes>
 </document>

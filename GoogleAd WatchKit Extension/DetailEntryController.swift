@@ -14,7 +14,10 @@ class DetailEntryController: WKInterfaceController {
     
     @IBOutlet weak var nameLabel: WKInterfaceLabel!
     @IBOutlet weak var descLabel: WKInterfaceLabel!
+    @IBOutlet weak var selectedSwitch: WKInterfaceSwitch!
     
+    let defaults = NSUserDefaults.standardUserDefaults()
+    let selectedEntryKey = "selectedEntry"
     var data:Entry?
     
     override func awakeWithContext(context: AnyObject?) {
@@ -30,6 +33,10 @@ class DetailEntryController: WKInterfaceController {
         
         nameLabel.setText(data?.name)
         descLabel.setText(data?.description)
+        
+        if let selectedEntry = defaults.stringForKey(selectedEntryKey) {
+            selectedSwitch.setOn(selectedEntry == data?.name)
+        }
     }
 
     override func didDeactivate() {
@@ -58,5 +65,21 @@ class DetailEntryController: WKInterfaceController {
         }
         
         popController()
+    }
+    
+    @IBAction func selectedSwitchValueChanged(value: Bool) {
+        if let data = data {
+            defaults.removeObjectForKey(selectedEntryKey)
+#if !(TARGET_IPHONE_SIMULATOR)
+            if !value {
+                defaults.setObject(data.name, forKey: selectedEntryKey)
+            }
+#else
+            if value {
+                defaults.setObject(data.name, forKey: selectedEntryKey)
+            }
+#endif
+            defaults.synchronize()
+        }
     }
 }

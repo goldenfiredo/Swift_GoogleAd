@@ -20,6 +20,7 @@
 		4DAFE5B21A722EB60099FC0D /* CoreDataDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAFE5AC1A722EB60099FC0D /* CoreDataDAO.swift */; };
 		4DAFE5B41A722EB60099FC0D /* PersonModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAFE5AF1A722EB60099FC0D /* PersonModal.swift */; };
 		4DAFE5B71A723C470099FC0D /* Person.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4DAFE5B51A723C470099FC0D /* Person.xcdatamodeld */; };
+		AB5F98341AFEF9BC009A22A9 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F98331AFEF9BC009A22A9 /* GlanceController.swift */; };
 		AB63FC8E1ACC368E008E6E94 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB63FC8D1ACC368E008E6E94 /* GoogleMobileAds.framework */; };
 		AB63FC971ACC38A7008E6E94 /* Marquee.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63FC911ACC38A7008E6E94 /* Marquee.swift */; };
 		AB63FC981ACC38A7008E6E94 /* TextFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB63FC931ACC38A7008E6E94 /* TextFlowView.m */; };
@@ -113,6 +114,7 @@
 		4DAFE5AC1A722EB60099FC0D /* CoreDataDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataDAO.swift; sourceTree = "<group>"; };
 		4DAFE5AF1A722EB60099FC0D /* PersonModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonModal.swift; sourceTree = "<group>"; };
 		4DAFE5B61A723C470099FC0D /* Person.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Person.xcdatamodel; sourceTree = "<group>"; };
+		AB5F98331AFEF9BC009A22A9 /* GlanceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
 		AB63FC8D1ACC368E008E6E94 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		AB63FC911ACC38A7008E6E94 /* Marquee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Marquee.swift; sourceTree = "<group>"; };
 		AB63FC921ACC38A7008E6E94 /* TextFlowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFlowView.h; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 				AB63FD151AE14B92008E6E94 /* InterfaceController.swift */,
 				AB63FDFD1AE3E406008E6E94 /* DetailEntryController.swift */,
 				AB63FD311AE27F42008E6E94 /* RowController.swift */,
+				AB5F98331AFEF9BC009A22A9 /* GlanceController.swift */,
 				AB63FD371AE2925A008E6E94 /* WatchKit_Bridging_Header.h */,
 				AB63FD171AE14B92008E6E94 /* Images.xcassets */,
 				AB63FD131AE14B91008E6E94 /* Supporting Files */,
@@ -660,6 +663,7 @@
 				AB63FD531AE29443008E6E94 /* FMDatabase.m in Sources */,
 				AB63FD501AE29443008E6E94 /* DB.swift in Sources */,
 				AB63FD561AE29443008E6E94 /* FMDatabaseQueue.m in Sources */,
+				AB5F98341AFEF9BC009A22A9 /* GlanceController.swift in Sources */,
 				AB63FD571AE29443008E6E94 /* FMResultSet.m in Sources */,
 				AB63FD321AE27F42008E6E94 /* RowController.swift in Sources */,
 				AB63FDFE1AE3E407008E6E94 /* DetailEntryController.swift in Sources */,

@@ -75,4 +75,15 @@ class InterfaceController: WKInterfaceController {
         rowData = dal.getAllEntries()
         load()
     }
+    
+    override func handleUserActivity(userInfo: [NSObject : AnyObject]!) {
+        if let handedEntry = userInfo["entry"] as? String {
+            for ent in rowData {
+                if ent.name == handedEntry {
+                    pushControllerWithName("DetailEntry", context: ent)
+                    break
+                }
+            }
+        }
+    }
 }
