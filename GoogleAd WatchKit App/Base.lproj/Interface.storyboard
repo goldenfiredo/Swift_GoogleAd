@@ -70,7 +70,25 @@
                     </connections>
                 </glanceController>
             </objects>
-            <point key="canvasLocation" x="57" y="439"/>
+            <point key="canvasLocation" x="140" y="382"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="xHy-uq-jLh">
+            <objects>
+                <notificationController id="4JJ-vX-bbT">
+                    <items>
+                        <label alignment="left" text="Alert Label" id="J6N-p6-Q3F">
+                            <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </label>
+                    </items>
+                    <notificationCategory key="notificationCategory" id="Bhm-9k-xnG"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="J6N-p6-Q3F" id="z3d-YN-OPL"/>
+                        <segue destination="gs5-q3-vbY" kind="relationship" relationship="dynamicNotificationInterface" id="Lsg-6W-OdB"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="136" y="610"/>
         </scene>
         <!--DetailEntry-->
         <scene sceneID="LF9-dQ-lhl">
@@ -114,6 +132,27 @@
                 </controller>
             </objects>
             <point key="canvasLocation" x="439" y="124"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="Ky6-ZN-kjj">
+            <objects>
+                <controller id="gs5-q3-vbY" customClass="NotificationController" customModule="GoogleAd_WatchKit_Extension">
+                    <items>
+                        <label alignment="left" text="Name" id="jHw-PA-mEu">
+                            <color key="textColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="font" type="system" pointSize="18"/>
+                        </label>
+                        <label alignment="left" text="Description" id="Tf5-aI-8We">
+                            <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                        </label>
+                    </items>
+                    <connections>
+                        <outlet property="descLabel" destination="Tf5-aI-8We" id="rJn-cd-rSd"/>
+                        <outlet property="nameLabel" destination="jHw-PA-mEu" id="xKT-56-Kao"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="436" y="610"/>
         </scene>
     </scenes>
 </document>

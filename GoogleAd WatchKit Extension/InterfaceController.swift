@@ -24,9 +24,7 @@ class InterfaceController: WKInterfaceController {
         RowData(name:"ghi", description:"this is ghi")
     ]*/
     
-    let dal = EntryDAL()
     var rowData=[Entry]()
-    
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
@@ -39,7 +37,7 @@ class InterfaceController: WKInterfaceController {
         super.willActivate()
         NSLog("%@ willActivate", self)
         
-        rowData = dal.getAllEntries()
+        rowData = EntryDAL().getAllEntries()
         load()
     }
     
@@ -72,7 +70,7 @@ class InterfaceController: WKInterfaceController {
     @IBAction func refresh() {
         println("refresh tapped")
         
-        rowData = dal.getAllEntries()
+        rowData = EntryDAL().getAllEntries()
         load()
     }
     
@@ -84,6 +82,13 @@ class InterfaceController: WKInterfaceController {
                     break
                 }
             }
+        }
+    }
+    
+    override func handleActionWithIdentifier(identifier: String?, forLocalNotification localNotification: UILocalNotification) {
+        var rd = EntryDAL().getAllEntries()
+        if rd.count > 0 {
+            pushControllerWithName("DetailEntry", context: rd[0])
         }
     }
 }

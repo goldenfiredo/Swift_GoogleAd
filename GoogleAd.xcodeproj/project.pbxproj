@@ -21,6 +21,7 @@
 		4DAFE5B41A722EB60099FC0D /* PersonModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAFE5AF1A722EB60099FC0D /* PersonModal.swift */; };
 		4DAFE5B71A723C470099FC0D /* Person.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4DAFE5B51A723C470099FC0D /* Person.xcdatamodeld */; };
 		AB5F98341AFEF9BC009A22A9 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F98331AFEF9BC009A22A9 /* GlanceController.swift */; };
+		AB5F98361AFF8919009A22A9 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F98351AFF8918009A22A9 /* NotificationController.swift */; };
 		AB63FC8E1ACC368E008E6E94 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB63FC8D1ACC368E008E6E94 /* GoogleMobileAds.framework */; };
 		AB63FC971ACC38A7008E6E94 /* Marquee.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63FC911ACC38A7008E6E94 /* Marquee.swift */; };
 		AB63FC981ACC38A7008E6E94 /* TextFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB63FC931ACC38A7008E6E94 /* TextFlowView.m */; };
@@ -115,6 +116,7 @@
 		4DAFE5AF1A722EB60099FC0D /* PersonModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonModal.swift; sourceTree = "<group>"; };
 		4DAFE5B61A723C470099FC0D /* Person.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Person.xcdatamodel; sourceTree = "<group>"; };
 		AB5F98331AFEF9BC009A22A9 /* GlanceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
+		AB5F98351AFF8918009A22A9 /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		AB63FC8D1ACC368E008E6E94 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		AB63FC911ACC38A7008E6E94 /* Marquee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Marquee.swift; sourceTree = "<group>"; };
 		AB63FC921ACC38A7008E6E94 /* TextFlowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFlowView.h; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 				AB63FDFD1AE3E406008E6E94 /* DetailEntryController.swift */,
 				AB63FD311AE27F42008E6E94 /* RowController.swift */,
 				AB5F98331AFEF9BC009A22A9 /* GlanceController.swift */,
+				AB5F98351AFF8918009A22A9 /* NotificationController.swift */,
 				AB63FD371AE2925A008E6E94 /* WatchKit_Bridging_Header.h */,
 				AB63FD171AE14B92008E6E94 /* Images.xcassets */,
 				AB63FD131AE14B91008E6E94 /* Supporting Files */,
@@ -668,6 +671,7 @@
 				AB63FD321AE27F42008E6E94 /* RowController.swift in Sources */,
 				AB63FDFE1AE3E407008E6E94 /* DetailEntryController.swift in Sources */,
 				AB63FD541AE29443008E6E94 /* FMDatabaseAdditions.m in Sources */,
+				AB5F98361AFF8919009A22A9 /* NotificationController.swift in Sources */,
 				AB63FD521AE29443008E6E94 /* EntryDAL.swift in Sources */,
 				AB63FD161AE14B92008E6E94 /* InterfaceController.swift in Sources */,
 				AB63FD551AE29443008E6E94 /* FMDatabasePool.m in Sources */,
@@ -884,8 +888,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "GoogleAd WatchKit Extension/GoogleAd WatchKit Extension.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -904,8 +906,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "GoogleAd WatchKit Extension/GoogleAd WatchKit Extension.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = "GoogleAd WatchKit Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
