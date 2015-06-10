@@ -13,9 +13,9 @@
                         <table alignment="left" id="N5G-yS-a5J">
                             <items>
                                 <tableRow identifier="Row" id="KFY-A7-fGs" customClass="RowController" customModule="GoogleAd_WatchKit_Extension">
-                                    <group key="rootItem" width="1" height="40.5" alignment="left" id="Rt7-hm-RmR">
+                                    <group key="rootItem" width="1" height="40.5" alignment="left" layout="vertical" id="Rt7-hm-RmR">
                                         <items>
-                                            <label height="20" alignment="center" verticalAlignment="bottom" text="Label" textAlignment="center" id="2XC-Cc-Cxi">
+                                            <label height="20" alignment="left" verticalAlignment="bottom" text="Label" textAlignment="center" id="2XC-Cc-Cxi">
                                                 <fontDescription key="font" type="system" pointSize="12"/>
                                             </label>
                                             <label alignment="left" text="Label" textAlignment="center" id="Ul0-so-EmP">
