@@ -70,15 +70,11 @@ class DetailEntryController: WKInterfaceController {
     @IBAction func selectedSwitchValueChanged(value: Bool) {
         if let data = data {
             defaults.removeObjectForKey(selectedEntryKey)
-#if !(TARGET_IPHONE_SIMULATOR)
-            if !value {
-                defaults.setObject(data.name, forKey: selectedEntryKey)
-            }
-#else
+
             if value {
                 defaults.setObject(data.name, forKey: selectedEntryKey)
             }
-#endif
+
             defaults.synchronize()
         }
     }

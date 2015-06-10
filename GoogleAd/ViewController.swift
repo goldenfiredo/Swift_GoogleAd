@@ -227,9 +227,8 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADInterstitialDe
     //Interstitial func
     func createAndLoadInterstitial()->GADInterstitial {
         println("createAndLoadInterstitial")
-        var interstitial = GADInterstitial()
+        var interstitial = GADInterstitial(adUnitID: "ca-app-pub-6938332798224330/6206234808")
         interstitial.delegate = self
-        interstitial.adUnitID = "ca-app-pub-6938332798224330/6206234808"
         interstitial.loadRequest(GADRequest())
         
         return interstitial

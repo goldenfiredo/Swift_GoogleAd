@@ -18,7 +18,7 @@ class CoreDataDAL {
     func getAllPersons()->[PersonModal] {
         var people = [PersonModal]()
         
-        people = dao.getEntities() as [PersonModal]
+        people = dao.getEntities() as! [PersonModal]
         
         return people
     }

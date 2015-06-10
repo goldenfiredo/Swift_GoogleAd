@@ -26,7 +26,7 @@ class CoreDataDAO {
         //3
         var error: NSError?
         
-        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
+        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as! [NSManagedObject]?
         
         if let results = fetchedResults {
             entity = results
@@ -47,7 +47,7 @@ class CoreDataDAO {
         fetchRequest.predicate = predicate
         
         var error: NSError?
-        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
+        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as! [NSManagedObject]?
         
         if let results = fetchedResults {
             if results.count == 0 {

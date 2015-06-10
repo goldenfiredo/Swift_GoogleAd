@@ -45,7 +45,7 @@ class CoreDataDemoViewController : UITableViewController, UITableViewDataSource,
         var alert = UIAlertController(title: "New Person", message: "Add a new Person", preferredStyle: .Alert)
         
         let saveAction = UIAlertAction(title: "Save", style: .Default) { (action: UIAlertAction!) -> Void in
-                let textField = alert.textFields![0] as UITextField
+                let textField = alert.textFields![0] as! UITextField
                 self.saveName(textField.text)
                 self.tableView.reloadData()
         }
@@ -105,9 +105,8 @@ class CoreDataDemoViewController : UITableViewController, UITableViewDataSource,
     
     //Interstitial func
     func createAndLoadInterstitial()->GADInterstitial {
-        var interstitial = GADInterstitial()
+        var interstitial = GADInterstitial(adUnitID: "ca-app-pub-6938332798224330/6206234808")
         interstitial.delegate = self
-        interstitial.adUnitID = "ca-app-pub-6938332798224330/6206234808"
         interstitial.loadRequest(GADRequest())
         
         return interstitial
