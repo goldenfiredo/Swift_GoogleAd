@@ -10,7 +10,7 @@ import UIKit
 import iAd
 import GoogleMobileAds
 
-let marqueeText = "本呆猫包含Google条幅广告、插屏广告、Apple条幅广告、Swift封装CoreData、Swift封装FMDB、Apple Watch Data Sharing/Communication/Glance、Toast和跑马灯..."
+let marqueeText = "本呆猫包含Google条幅广告、插屏广告、Apple条幅广告、Swift封装CoreData、Swift封装FMDB、Apple Watch Data Sharing/Communication/Glance/Local Notification、Toast和跑马灯..."
 
 class ViewController: UIViewController, GADBannerViewDelegate, GADInterstitialDelegate,  ADBannerViewDelegate {
     var iAdSupported = false
@@ -23,9 +23,13 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADInterstitialDe
     var loadRequestAllowed = true
     var bannerDisplayed = false
     let statusbarHeight:CGFloat = 20.0
+    var adViewHeight:CGFloat = 0
+    var buttonHeight:CGFloat = 0.0
+    var buttonOffsetY:CGFloat = 0.0
+    let screen = UIScreen.mainScreen().bounds
+    let IS_IPAD = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Pad
     
     var demoButton:UIButton?
-    
     var demoCoreDataButton:UIButton?
     
     override func viewDidLoad() {
@@ -41,13 +45,18 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADInterstitialDe
             iAdView?.frame = CGRectMake(0, 0 - iAdView!.frame.height, iAdView!.frame.width, iAdView!.frame.height)
             iAdView?.delegate = self
             self.view.addSubview(iAdView!)
-            
+            adViewHeight = iAdView!.frame.size.height
         } else {
-            bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+            if IS_IPAD {
+                bannerView = GADBannerView(adSize: kGADAdSizeLeaderboard)
+            } else {
+                bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+            }
             bannerView?.adUnitID = "ca-app-pub-6938332798224330/9023870805"
             bannerView?.delegate = self
             bannerView?.rootViewController = self
             self.view.addSubview(bannerView!)
+            adViewHeight = bannerView!.frame.size.height
             bannerView?.loadRequest(GADRequest())
         
             timer?.invalidate()
@@ -59,31 +68,39 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADInterstitialDe
         var frame = imageView!.frame
         frame.origin.x = 0
         frame.origin.y = statusbarHeight
+        frame.size.width = screen.width
+        frame.size.height = screen.height
         imageView!.frame = frame
         self.view.addSubview(imageView!)
         
         //Admob Interstitial
+        buttonHeight = IS_IPAD ? 30 : 20
+        buttonOffsetY = statusbarHeight
         if !iAdSupported {
             interstitial = createAndLoadInterstitial()
             
             button = UIButton.buttonWithType(UIButtonType.System) as? UIButton
-            button?.frame = CGRectMake(60, 20, 180, 20)
+            button?.frame = CGRectMake(60, buttonOffsetY, IS_IPAD ? 400 : 180, buttonHeight)
             button?.setTitle("<<<点此测试插屏广告>>>", forState: UIControlState.Normal)
             button?.enabled = false
             button?.userInteractionEnabled = true
             button?.addTarget(self, action: "presentInterstitial:", forControlEvents: .TouchUpInside)
             self.view.addSubview(button!)
+            
+            buttonOffsetY = buttonOffsetY + buttonHeight
         }
         
+        buttonOffsetY = buttonOffsetY + 5
         demoButton = UIButton.buttonWithType(UIButtonType.System) as? UIButton
-        demoButton?.frame = CGRectMake(40, 45, 240, 20)
+        demoButton?.frame = CGRectMake(40, buttonOffsetY, IS_IPAD ? 500 : 240, buttonHeight)
         demoButton?.setTitle("<<<点此测试 Wrapping FMDB>>>", forState: UIControlState.Normal)
         demoButton?.userInteractionEnabled = true
         demoButton?.addTarget(self, action: "showDemo:", forControlEvents: .TouchUpInside)
         self.view.addSubview(demoButton!)
         
+        buttonOffsetY = buttonOffsetY + buttonHeight + 5
         demoCoreDataButton = UIButton.buttonWithType(UIButtonType.System) as? UIButton
-        demoCoreDataButton?.frame = CGRectMake(20, 70, 280, 20)
+        demoCoreDataButton?.frame = CGRectMake(20, buttonOffsetY, IS_IPAD ? 600 : 280, buttonHeight)
         demoCoreDataButton?.setTitle("<<<点此测试 Wrapping CoreData>>>", forState: UIControlState.Normal)
         demoCoreDataButton?.userInteractionEnabled = true
         demoCoreDataButton?.addTarget(self, action: "showCoreDataDemo:", forControlEvents: .TouchUpInside)
@@ -165,7 +182,7 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADInterstitialDe
     func relayoutViews() {
         if (bannerDisplayed) {
             var bannerFrame = iAdSupported ? iAdView!.frame : bannerView!.frame
-            bannerFrame.origin.x = 0
+            bannerFrame.origin.x = (screen.width - bannerFrame.width)/2
             bannerFrame.origin.y = statusbarHeight
             if iAdSupported {
                 iAdView!.frame = bannerFrame
@@ -178,20 +195,25 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADInterstitialDe
             imageviewFrame.origin.y = statusbarHeight + bannerFrame.size.height
             imageView!.frame = imageviewFrame
             
+            var buttonFrame:CGRect
+            buttonOffsetY = statusbarHeight + adViewHeight
             //Admob Interstitial button
             if !iAdSupported {
-                var buttonFrame = button!.frame
-                buttonFrame.origin.y = 70
+                buttonFrame = button!.frame
+                buttonFrame.origin.y = buttonOffsetY
                 button!.frame = buttonFrame
-                
-                buttonFrame = demoButton!.frame
-                buttonFrame.origin.y = 95
-                demoButton!.frame = buttonFrame
-                
-                buttonFrame = demoCoreDataButton!.frame
-                buttonFrame.origin.y = 120
-                demoCoreDataButton!.frame = buttonFrame
+                buttonOffsetY = buttonOffsetY + buttonHeight + 5
             }
+            
+            buttonFrame = demoButton!.frame
+            buttonFrame.origin.y = buttonOffsetY
+            demoButton!.frame = buttonFrame
+            buttonOffsetY = buttonOffsetY + buttonHeight + 5
+            
+            buttonFrame = demoCoreDataButton!.frame
+            buttonFrame.origin.y = buttonOffsetY
+            demoCoreDataButton!.frame = buttonFrame
+            
         } else {
             var bannerFrame = iAdSupported ? iAdView!.frame : bannerView!.frame
             bannerFrame.origin.x = 0
@@ -207,20 +229,24 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADInterstitialDe
             imageviewFrame.origin.y = statusbarHeight
             imageView!.frame = imageviewFrame
             
+            var buttonFrame:CGRect
+            buttonOffsetY = statusbarHeight
             //Admob Interstitial button
             if !iAdSupported {
-                var buttonFrame = button!.frame
-                buttonFrame.origin.y = 20
+                buttonFrame = button!.frame
+                buttonFrame.origin.y = buttonOffsetY
                 button!.frame = buttonFrame
-                
-                buttonFrame = demoButton!.frame
-                buttonFrame.origin.y = 45
-                demoButton!.frame = buttonFrame
-                
-                buttonFrame = demoCoreDataButton!.frame
-                buttonFrame.origin.y = 70
-                demoCoreDataButton!.frame = buttonFrame
+                buttonOffsetY = buttonOffsetY + buttonHeight + 5
             }
+            
+            buttonFrame = demoButton!.frame
+            buttonFrame.origin.y = buttonOffsetY
+            demoButton!.frame = buttonFrame
+            buttonOffsetY = buttonOffsetY + buttonHeight + 5
+            
+            buttonFrame = demoCoreDataButton!.frame
+            buttonFrame.origin.y = buttonOffsetY
+            demoCoreDataButton!.frame = buttonFrame
         }
     }
     
@@ -314,6 +340,7 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADInterstitialDe
     
     //FMDB
     func showDemo(sender:UIButton!) {
+        loadRequestAllowed = false
         let demoVC = FMDBDemoViewController()
         let navVC = UINavigationController(rootViewController: demoVC)
         let backButton = UIBarButtonItem(title: "Close", style: .Plain, target: self, action: "back")
@@ -323,11 +350,13 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADInterstitialDe
     }
     
     func back() {
+        loadRequestAllowed = true
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     //CoreData
     func showCoreDataDemo(sender:UIButton!) {
+        loadRequestAllowed = false
         let demoVC = CoreDataDemoViewController()
         let navVC = UINavigationController(rootViewController: demoVC)
         let backButton = UIBarButtonItem(title: "Close", style: .Plain, target: self, action: "back")
