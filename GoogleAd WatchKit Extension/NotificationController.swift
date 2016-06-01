@@ -44,7 +44,7 @@ class NotificationController: WKUserNotificationInterfaceController {
         
         //For demo purpose, I only display first entry on notification's UI
         if rowData.count > 0 {
-            var rd = rowData[0];
+            let rd = rowData[0];
             nameLabel.setText(rd.name)
             descLabel.setText(rd.description)
         }

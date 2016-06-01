@@ -54,7 +54,7 @@ class InterfaceController: WKInterfaceController {
     }
 
     override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
-        println("didSelectRowAtIndex")
+        print("didSelectRowAtIndex")
         
         let data = rowData[rowIndex]
         
@@ -68,7 +68,7 @@ class InterfaceController: WKInterfaceController {
     }
 
     @IBAction func refresh() {
-        println("refresh tapped")
+        print("refresh tapped")
         
         rowData = EntryDAL().getAllEntries()
         load()

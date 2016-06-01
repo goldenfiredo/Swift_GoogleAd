@@ -69,12 +69,12 @@ class DB {
             }*/
             
             if !db!.tableExists(table_name) {
-                var creat_table = "CREATE TABLE \(table_name) (id INTEGER PRIMARY KEY, name VARCHAR(80), description VARCHAR(80))"
+                let creat_table = "CREATE TABLE \(table_name) (id INTEGER PRIMARY KEY, name VARCHAR(80), description VARCHAR(80))"
                 result = db!.executeUpdate(creat_table, withArgumentsInArray: nil)
             }
         }
         
-        println("init : \(result)")
+        print("init : \(result)")
         
         return result
     }

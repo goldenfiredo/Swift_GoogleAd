@@ -10,14 +10,14 @@ import Foundation
 import UIKit
 import GoogleMobileAds
 
-class FMDBDemoViewController : UITableViewController, UITableViewDataSource, UITableViewDelegate, GADInterstitialDelegate {
+class FMDBDemoViewController : UITableViewController, GADInterstitialDelegate {
     let dal = EntryDAL()
     var data=[Entry]()
     
     var interstitial:GADInterstitial?
     
     override func viewDidLoad() {
-        let addButton = UIBarButtonItem(title: "Add", style: .Plain, target: self, action: "addEntry")
+        let addButton = UIBarButtonItem(title: "Add", style: .Plain, target: self, action: #selector(FMDBDemoViewController.addEntry))
         
         self.navigationItem.rightBarButtonItem = addButton
         
@@ -25,9 +25,9 @@ class FMDBDemoViewController : UITableViewController, UITableViewDataSource, UIT
         self.tableView.dataSource = self
         
         interstitial = createAndLoadInterstitial()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "displayInterstitial", name: "kDisplayInterstitialNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FMDBDemoViewController.displayInterstitial), name: "kDisplayInterstitialNotification", object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refresh", name: "kRefreshFMDBNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FMDBDemoViewController.refresh), name: "kRefreshFMDBNotification", object: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -37,11 +37,11 @@ class FMDBDemoViewController : UITableViewController, UITableViewDataSource, UIT
     }
     
     func addEntry() {
-        println("in add Entry")
+        print("in add Entry")
         
         let addVC = AddEntryViewController()
         let navVC = UINavigationController(rootViewController: addVC)
-        let backButton = UIBarButtonItem(title: "Back", style: .Plain, target: self, action: "back")
+        let backButton = UIBarButtonItem(title: "Back", style: .Plain, target: self, action: #selector(FMDBDemoViewController.back))
         //backButton.tintColor = UIColor.redColor()
         addVC.navigationItem.setLeftBarButtonItem(backButton, animated: true)
         
@@ -59,7 +59,7 @@ class FMDBDemoViewController : UITableViewController, UITableViewDataSource, UIT
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let index = indexPath.row
-        var cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: nil)
+        let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: nil)
         cell.textLabel?.text = data[index].name
         cell.detailTextLabel?.text = data[index].description
         
@@ -80,7 +80,7 @@ class FMDBDemoViewController : UITableViewController, UITableViewDataSource, UIT
     
     //Interstitial func
     func createAndLoadInterstitial()->GADInterstitial {
-        var interstitial = GADInterstitial(adUnitID: "ca-app-pub-6938332798224330/6206234808")
+        let interstitial = GADInterstitial(adUnitID: "ca-app-pub-6938332798224330/6206234808")
         interstitial.delegate = self
         interstitial.loadRequest(GADRequest())
         
@@ -89,7 +89,7 @@ class FMDBDemoViewController : UITableViewController, UITableViewDataSource, UIT
     
     //Interstitial delegate
     func interstitial(ad: GADInterstitial!, didFailToReceiveAdWithError error: GADRequestError!) {
-        println("interstitialDidFailToReceiveAdWithError:\(error.localizedDescription)")
+        print("interstitialDidFailToReceiveAdWithError:\(error.localizedDescription)")
         interstitial = createAndLoadInterstitial()
     }
     
@@ -110,13 +110,13 @@ class FMDBDemoViewController : UITableViewController, UITableViewDataSource, UIT
     }*/
     
     func displayInterstitial() {
-        if let isReady = interstitial?.isReady {
+        if (interstitial?.isReady) != nil {
             interstitial?.presentFromRootViewController(self)
         }
     }
     
     func refresh() {
-        println("in refresh")
+        print("in refresh")
         
         data = dal.getAllEntries()
         self.tableView.reloadData()

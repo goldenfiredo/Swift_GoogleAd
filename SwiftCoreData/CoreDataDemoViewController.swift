@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import GoogleMobileAds
 
-class CoreDataDemoViewController : UITableViewController, UITableViewDataSource, UITableViewDelegate, GADInterstitialDelegate {
+class CoreDataDemoViewController : UITableViewController, GADInterstitialDelegate {
     
     var people = [PersonModal]()
     var dal:CoreDataDAL!
@@ -18,7 +18,7 @@ class CoreDataDemoViewController : UITableViewController, UITableViewDataSource,
     var interstitial:GADInterstitial?
     
     override func viewDidLoad() {
-        let addButton = UIBarButtonItem(title: "Add", style: .Plain, target: self, action: "addPerson")
+        let addButton = UIBarButtonItem(title: "Add", style: .Plain, target: self, action: #selector(CoreDataDemoViewController.addPerson))
         
         self.navigationItem.rightBarButtonItem = addButton
         
@@ -26,11 +26,11 @@ class CoreDataDemoViewController : UITableViewController, UITableViewDataSource,
         self.tableView.dataSource = self
         
         interstitial = createAndLoadInterstitial()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "displayInterstitial", name: "kDisplayInterstitialNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CoreDataDemoViewController.displayInterstitial), name: "kDisplayInterstitialNotification", object: nil)
         
         dal = CoreDataDAL()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationWillTerminate", name: UIApplicationWillTerminateNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CoreDataDemoViewController.applicationWillTerminate), name: UIApplicationWillTerminateNotification, object: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -40,18 +40,18 @@ class CoreDataDemoViewController : UITableViewController, UITableViewDataSource,
     }
     
     func addPerson() {
-        println("in add Person")
+        print("in add Person")
         
-        var alert = UIAlertController(title: "New Person", message: "Add a new Person", preferredStyle: .Alert)
+        let alert = UIAlertController(title: "New Person", message: "Add a new Person", preferredStyle: .Alert)
         
-        let saveAction = UIAlertAction(title: "Save", style: .Default) { (action: UIAlertAction!) -> Void in
-                let textField = alert.textFields![0] as! UITextField
-                self.saveName(textField.text)
+        let saveAction = UIAlertAction(title: "Save", style: .Default) { (action: UIAlertAction) -> Void in
+                let textField = alert.textFields![0] 
+                self.saveName(textField.text!)
                 self.tableView.reloadData()
         }
         
         let cancelAction = UIAlertAction(title: "Cancel",
-            style: .Default) { (action: UIAlertAction!) -> Void in
+            style: .Default) { (action: UIAlertAction) -> Void in
         }
         
         alert.addTextFieldWithConfigurationHandler {
@@ -73,7 +73,7 @@ class CoreDataDemoViewController : UITableViewController, UITableViewDataSource,
     }
     
     func applicationWillTerminate() {
-        print("in applicationWillTerminate")
+        print("in applicationWillTerminate", terminator: "")
         dal.saveContext()
     }
     
@@ -83,8 +83,8 @@ class CoreDataDemoViewController : UITableViewController, UITableViewDataSource,
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let index = indexPath.row
-        var cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: nil)
+        _ = indexPath.row
+        let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: nil)
         let person = people[indexPath.row]
         cell.textLabel!.text = person.name
         
@@ -105,7 +105,7 @@ class CoreDataDemoViewController : UITableViewController, UITableViewDataSource,
     
     //Interstitial func
     func createAndLoadInterstitial()->GADInterstitial {
-        var interstitial = GADInterstitial(adUnitID: "ca-app-pub-6938332798224330/6206234808")
+        let interstitial = GADInterstitial(adUnitID: "ca-app-pub-6938332798224330/6206234808")
         interstitial.delegate = self
         interstitial.loadRequest(GADRequest())
         
@@ -114,7 +114,7 @@ class CoreDataDemoViewController : UITableViewController, UITableViewDataSource,
     
     //Interstitial delegate
     func interstitial(ad: GADInterstitial!, didFailToReceiveAdWithError error: GADRequestError!) {
-        println("interstitialDidFailToReceiveAdWithError:\(error.localizedDescription)")
+        print("interstitialDidFailToReceiveAdWithError:\(error.localizedDescription)")
         interstitial = createAndLoadInterstitial()
     }
     
@@ -123,7 +123,7 @@ class CoreDataDemoViewController : UITableViewController, UITableViewDataSource,
     }
     
     func displayInterstitial() {
-        if let isReady = interstitial?.isReady {
+        if (interstitial?.isReady) != nil {
             if interstitial?.hasBeenUsed != true {
                 interstitial?.presentFromRootViewController(self)
             }

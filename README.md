@@ -13,6 +13,6 @@ demo for Apple Watch Glance/
 demo for Apple Watch Notification/
 
 
-The project should be compiled with Xcode 6.3.2 (Swift 1.2)
+The project should be compiled with Xcode 7.3.1 (Swift 3.0)
 
 

@@ -23,15 +23,10 @@ class CoreDataDAO {
         
         let fetchRequest = NSFetchRequest(entityName:"Person")
         
-        //3
-        var error: NSError?
-        
-        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as! [NSManagedObject]?
-        
-        if let results = fetchedResults {
-            entity = results
-        } else {
-            //println("Could not fetch \(error), \(error!.userInfo)")
+        do {
+            try entity = managedContext.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+        } catch {
+            
         }
         
         return entity
@@ -46,17 +41,13 @@ class CoreDataDAO {
         let predicate = NSPredicate(format: "%K = %@", "name", name)
         fetchRequest.predicate = predicate
         
-        var error: NSError?
-        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as! [NSManagedObject]?
+        do {
+            try entity = managedContext.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+        } catch {
+            return nil
+        }
         
-        if let results = fetchedResults {
-            if results.count == 0 {
-                return nil
-            }
-            
-            entity = results
-        } else {
-            //println("Could not fetch \(error), \(error!.userInfo)")
+        if entity.count == 0 {
             return nil
         }
         
@@ -77,8 +68,11 @@ class CoreDataDAO {
         person.setValue(name, forKey: "name")
         
         var error: NSError?
-        if !managedContext.save(&error) {
-            println("Could not save \(error), \(error?.userInfo)")
+        do {
+            try managedContext.save()
+        } catch let error1 as NSError {
+            error = error1
+            print("Could not save \(error), \(error?.userInfo)")
             return nil
         }
         
@@ -91,13 +85,13 @@ class CoreDataDAO {
         let entityToDelete = queryEntityByName(name)
         if let entity = entityToDelete {
             managedContext.deleteObject(entity)
-            var error:NSError?
-            if managedContext.save(&error) != true {
-                println("Delete error: " + error!.localizedDescription)
+            
+            do {
+                try managedContext.save()
+                return true
+            } catch {
                 return false
             }
-            
-            return true
         }
         
         return false

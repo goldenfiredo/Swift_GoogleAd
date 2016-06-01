@@ -530,6 +530,8 @@
 		4D7DFE3019AD66F200284480 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0730;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = GoldenFire.Do;
 				TargetAttributes = {

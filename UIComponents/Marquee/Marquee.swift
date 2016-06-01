@@ -11,9 +11,9 @@ class Marquee {
     }
     
     func createMarquee(superview:UIView, text:String) {
-        var tf = TextFlowView(frame: CGRect(x:0,y:0,width:320,height:40), text: text)
+        let tf = TextFlowView(frame: CGRect(x:0,y:0,width:320,height:40), text: text)
         
-        tf.setTranslatesAutoresizingMaskIntoConstraints(false)
+        tf.translatesAutoresizingMaskIntoConstraints = false
         tf.backgroundColor = UIColor.clearColor()
         tf.tintColor = UIColor.whiteColor()
         superview.addSubview(tf)

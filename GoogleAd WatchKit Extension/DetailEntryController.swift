@@ -50,16 +50,16 @@ class DetailEntryController: WKInterfaceController {
     
     @IBAction func delete() {
         if data != nil {
-            var dal = EntryDAL()
+            let dal = EntryDAL()
             dal.deleteEntry(data!)
             
-            var userInfo = ["command" : "Refresh"]
-            WKInterfaceController.openParentApplication(userInfo, reply: { (data, error) in
+            let userInfo = ["command" : "Refresh"]
+            WKInterfaceController.openParentApplication(userInfo, reply: { (replyInfo, error) in
                 if let error = error {
-                    println(error)
+                    print(error)
                 }
-                if let data = data {
-                    println(data)
+                if let data = replyInfo["response"] {
+                    print(data)
                 }
             })
         }

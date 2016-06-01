@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        var settings = UIUserNotificationSettings(forTypes:UIUserNotificationType.Badge|UIUserNotificationType.Alert|UIUserNotificationType.Sound, categories:nil)
+        let settings = UIUserNotificationSettings(forTypes:[UIUserNotificationType.Badge, UIUserNotificationType.Alert, UIUserNotificationType.Sound], categories:nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
         
         cancelLocalNotification()
@@ -54,28 +54,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(application: UIApplication, handleWatchKitExtensionRequest
-        userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]!) -> Void)?) {
-            println("in handleWatchKitExtensionRequest")
+        userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]?) -> Void)) {
+            print("in handleWatchKitExtensionRequest")
             
             let info = userInfo as? [String: String]
             let command = info?["command"]
             if command != nil && command == "Refresh" {
-                println("post kRefreshFMDBNotification")
+                print("post kRefreshFMDBNotification")
                 NSNotificationCenter.defaultCenter().postNotificationName("kRefreshFMDBNotification", object: nil)
                 
-                reply.map { $0(["response" : "success"]) }
+                reply(["response" : "success"])
                 
             } else {
-                reply.map { $0(["response" : "fail"]) }
+                reply(["response" : "fail"])
             }
     }
 
     func setLocalNotification(num:Int) {
-        var unit = 60.0 //minutes
-        var interval:NSTimeInterval = unit * Double(num) * Double(num) * Double(num)
+        let unit = 60.0 //minutes
+        let interval:NSTimeInterval = unit * Double(num) * Double(num) * Double(num)
         
-        var noti = UILocalNotification()
-        var now = NSDate()
+        let noti = UILocalNotification()
+        let now = NSDate()
         
         noti.fireDate = NSDate(timeInterval: interval, sinceDate: now)
         noti.alertBody = "It's time to notify you"
