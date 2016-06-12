@@ -303,13 +303,14 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADInterstitialDe
     
     //iAd func
     func iAdTimeZoneSupported()->Bool {
-        let iAdTimeZones = "America/;US/;Pacific/;Asia/Tokyo;Europe/".componentsSeparatedByString(";")
+        //Apple stop iAd service
+        /*let iAdTimeZones = "America/;US/;Pacific/;Asia/Tokyo;Europe/".componentsSeparatedByString(";")
         let myTimeZone = NSTimeZone.localTimeZone().name
         for zone in iAdTimeZones {
             if (myTimeZone.hasPrefix(zone)) {
                 return true;
             }
-        }
+        }*/
         
         return false;
     }
